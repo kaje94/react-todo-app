@@ -1,7 +1,7 @@
 apiVersion: core.choreo.dev/v1alpha1
 kind: ComponentConfig
 metadata:
-    name: todo-backend
+    name: react-todo-app-server
     projectName: Default Project
     annotations:
         componentType: service
@@ -9,7 +9,7 @@ spec:
     build:
         branch: main
     inbound:
-        - name: todo-backend
+        - name: react-todo-app-server
           port: 5000
           type: REST
           visibility: Public
