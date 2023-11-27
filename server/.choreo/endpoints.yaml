@@ -1,7 +1,7 @@
 # For more information, visit: https://wso2.com/choreo/docs/develop-components/configure-endpoints/
 endpoints:
     - context: /
-      name: todo-server
+      name: todo-server2
       networkVisibility: Public
       port: 5000
       schemaFilePath: ""

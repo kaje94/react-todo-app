@@ -1,7 +1,7 @@
 apiVersion: core.choreo.dev/v1alpha1
 kind: ComponentConfig
 metadata:
-    name: todo-server2
+    name: rest-api-test
     projectName: Default Project
     annotations:
         componentType: service
@@ -9,8 +9,8 @@ spec:
     build:
         branch: main
     inbound:
-        - name: todo-server2
-          port: 5000
+        - name: rest-api-test
+          port: 8080
           type: REST
           visibility: Public
           context: /
