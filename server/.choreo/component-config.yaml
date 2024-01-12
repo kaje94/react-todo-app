@@ -1,15 +1,15 @@
 apiVersion: core.choreo.dev/v1alpha1
 kind: ComponentConfig
 metadata:
-    name: demo-server1
-    projectName: Default Project
+    name: test-server1
+    projectName: "Demo Project"
     annotations:
         componentType: service
 spec:
     build:
         branch: main
     inbound:
-        - name: demo-server1
+        - name: test-server1
           port: 5000
           type: REST
           visibility: Public
