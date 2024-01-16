@@ -1,9 +1,0 @@
-# For more information, visit: https://wso2.com/choreo/docs/develop-components/configure-endpoints/
-endpoints:
-    - context: /
-      name: rest-api-test
-      networkVisibility: Public
-      port: 8080
-      schemaFilePath: ""
-      type: REST
-version: 0.1
