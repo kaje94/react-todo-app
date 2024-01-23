@@ -4,6 +4,7 @@ class TodosController {
   // Get all todos
   async getAll(req, res) {
     try {
+      console.log('Running "getAll" ', process.env.ENV1)
       const todos = await TodoModel.findAll();
       res.status(200).json(todos);
     } catch (error) {
@@ -14,6 +15,7 @@ class TodosController {
   // Get a single todo by id
   async getById(req, res) {
     try {
+      console.log('Running "getById"')
       const todo = await TodoModel.findById(req.params.id);
       if (todo) {
         res.status(200).json(todo);
@@ -28,6 +30,7 @@ class TodosController {
   // Create a new todo
   async create(req, res) {
     try {
+      console.log('Running "create"')
       const todo = await TodoModel.create(req.body);
       res.status(201).json(todo);
     } catch (error) {
@@ -38,6 +41,7 @@ class TodosController {
   // Update a todo
   async update(req, res) {
     try {
+      console.log('Running "update"')
       const todo = await TodoModel.update(req.params.id, req.body);
       if (todo) {
         res.status(200).json(todo);
@@ -52,6 +56,7 @@ class TodosController {
   // Delete a todo
   async delete(req, res) {
     try {
+      console.log('Running "delete"')
       const todo = await TodoModel.destroy({ where: { id: req.params.id } });
       if (todo) {
         res.status(200).json({ message: 'Todo deleted' });
