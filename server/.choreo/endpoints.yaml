@@ -1,0 +1,12 @@
+version: "0.1"
+endpoints:
+    - name: test-Organization
+      port: 5000
+      type: REST
+      visibility: Organization
+      context: /todos
+    - name: test-Project
+      port: 5001
+      type: REST
+      visibility: Project
+      context: /todos1
