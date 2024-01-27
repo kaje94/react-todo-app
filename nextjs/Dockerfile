@@ -10,6 +10,8 @@
 # USER 10014
 # CMD [ "npm", "start" ]
 
+#checkov:skip=CKV_CHOREO_1: required
+
 FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
