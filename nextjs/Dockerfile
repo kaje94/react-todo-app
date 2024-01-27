@@ -45,4 +45,6 @@ EXPOSE 3000
 
 ENV PORT 3000
 
+USER 10014
+
 CMD ["npm", "start"]
