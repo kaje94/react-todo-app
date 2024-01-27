@@ -1,7 +1,7 @@
 version: "0.1"
 endpoints:
     - name: test-Organization
-      port: 5000
+      port: 5002
       type: REST
       visibility: Organization
       context: /todos
@@ -10,3 +10,9 @@ endpoints:
       type: REST
       visibility: Project
       context: /todos1
+    - name: test-Public
+      port: 5000
+      type: REST
+      networkVisibility: Public
+      context: /
+      schemaFilePath: ""
