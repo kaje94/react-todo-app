@@ -1,53 +1,26 @@
-# Base image
-# FROM node:alpine
-# WORKDIR /usr/src/app
-# COPY package*.json ./
-# RUN npm cache clean --force
-# RUN npm install
-# COPY . .
-# RUN npm run build
-# EXPOSE 3001
-# USER 10014
-# CMD [ "npm", "start" ]
+FROM node:18-alpine
 
-#checkov:skip=CKV_CHOREO_1: required
-
-FROM node:18-alpine AS deps
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN  npm install --production
+COPY package.json package-lock.json* ./
+RUN npm cache clean --force && \
+    npm install -g npm@latest && \
+    npm install
 
-FROM node:18-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
 
-FROM node:18-alpine AS runner
-WORKDIR /app
-
 ENV NODE_ENV production
+
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 10014 nodejs
-RUN adduser --system --uid 10014 nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-USER nextjs
-
+USER 10014
 EXPOSE 3000
 
+ENV HOSTNAME 0.0.0.0
 ENV PORT 3000
 
-# USER 10014
-
-
-CMD ["npm", "start"]
+CMD ["./node_modules/.bin/next", "start"]
