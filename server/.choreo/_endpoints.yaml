@@ -1,0 +1,7 @@
+version: '0.1'
+endpoints:
+  - name: node-serrver-2-endpoint
+    port: 8080
+    networkVisibility: Public
+    context: /
+    type: REST
